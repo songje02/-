@@ -21,53 +21,51 @@ int romanToArabic(char c) {
 string romanNum;
 int arabicNum = 0;
 
-int input() {
-    cout << "로마자 숫자 입력 (종료하려면 esc 키를 누르세요) : ";
+int Render() {
 
-    romanNum = _getch();
-    if (romanNum[0] != 27)
-        getline(cin, romanNum);
-    else {
-        return 1;
-    }
+    while (true) {
+        cout << "로마자 숫자를 입력하세요 (종료하려면 esc 키를 누르세요): ";
 
-    return 0;
-}
+        //romanNum = _getch(); //입력 받기
 
-int gameLoop() {
-        
-    if (romanNum.empty()) { // 입력 오류 처리
-        cout << "입력 오류입니다. 프로그램을 종료합니다." << endl;
-        return 1;
-    }
-
-    // 로마자 숫자를 아라비아 숫자로 변환하는 과정
-    arabicNum = 0;
-    for (int i = 0; i < romanNum.length(); i++) {
-        if (romanToArabic(romanNum[i]) == 0) { // 유효하지 않은 문자 처리
-            cout << "다시 입력해주세요." << endl;
+        romanNum = _getch();
+        if (romanNum[0] != 27)
+            getline(cin, romanNum);
+        else {
             break;
         }
-        if (i < romanNum.length() - 1 && romanToArabic(romanNum[i]) < romanToArabic(romanNum[i + 1])) {
-            arabicNum -= romanToArabic(romanNum[i]); // 작은 수가 큰 수 앞에 오는 경우
+
+
+        if (romanNum.empty()) { // 입력 오류 처리
+            cout << "입력 오류입니다. 프로그램을 종료합니다." << endl;
+            return 1;
         }
-        else {
-            arabicNum += romanToArabic(romanNum[i]);
+
+        // 로마자 숫자를 아라비아 숫자로 변환하는 과정
+        arabicNum = 0;
+        for (int i = 0; i < romanNum.length(); i++) {
+            if (romanToArabic(romanNum[i]) == 0) { // 유효하지 않은 문자 처리
+                cout << "잘못된 입력입니다. 다시 입력해주세요." << endl;
+                break;
+            }
+            if (i < romanNum.length() - 1 && romanToArabic(romanNum[i]) < romanToArabic(romanNum[i + 1])) {
+                arabicNum -= romanToArabic(romanNum[i]); // 작은 수가 큰 수 앞에 오는 경우
+            }
+            else {
+                arabicNum += romanToArabic(romanNum[i]);
+            }
         }
+        cout << "아라비아 숫자로 변환한 결과: " << arabicNum << endl;
+        //if (romanNum.length() == arabicNum) { // 유효한 입력 처리
+        //    cout << "아라비아 숫자로 변환한 결과: " << arabicNum << endl;
+        //}
     }
-    cout << "아라비아 숫자로 변환한 결과: " << arabicNum << endl;
-    //if (romanNum.length() == arabicNum) { // 유효한 입력 처리
-    //    cout << "아라비아 숫자로 변환한 결과: " << arabicNum << endl;
-    //}
 }
 
+
 int main() {
-    
-    while (1) 
-    {
-        input(); //입력 받음
-        gameLoop(); //예외 처리 
-    }
+
+    Render();
 
     return 0;
 }
