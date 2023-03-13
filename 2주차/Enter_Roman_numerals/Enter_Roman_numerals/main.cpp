@@ -35,7 +35,6 @@ int Render() {
             break;
         }
 
-
         if (romanNum.empty()) { // 입력 오류 처리
             cout << "입력 오류입니다. 프로그램을 종료합니다." << endl;
             return 1;
@@ -61,7 +60,6 @@ int Render() {
         //}
     }
 }
-
 
 int main() {
 
