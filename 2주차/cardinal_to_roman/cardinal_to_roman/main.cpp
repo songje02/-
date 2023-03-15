@@ -40,17 +40,20 @@ int main() {
     bool invalidInput = false; // 입력값이 유효하지 않은지 여부를 저장하는 변수
     while (true) {
         if (!invalidInput) {
-            cout << "숫자 입력 (종료하려면 esc 키를 누르세요) : ";
+            cout << "숫자 입력 (종료하려면 esc 키를 누르세요) :";
         }
         else {
-            cout << "잘 못 입력하셨습니다. 다시 입력해주세요 : ";
+            cout << "잘 못 입력하셨습니다. 다시 입력해주세요 :";
         }
+
         input = _getch();
         if (input[0] != 27) {
             getline(cin, input);
         }
         else
-            return 1;
+            invalidInput = true;
+            //return 1;
+
         if (!isValidInput(input)) { // 유효하지 않은 입력값인 경우
             invalidInput = true;
             continue;

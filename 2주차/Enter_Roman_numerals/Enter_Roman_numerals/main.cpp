@@ -43,10 +43,11 @@ int Render() {
         // 로마자 숫자를 아라비아 숫자로 변환하는 과정
         arabicNum = 0;
         for (int i = 0; i < romanNum.length(); i++) {
-            if (romanToArabic(romanNum[i]) == 0) { // 유효하지 않은 문자 처리
+            if (romanToArabic(romanNum[i]) == 0 || romanToArabic(romanNum[i]) < 4000) { // 유효하지 않은 문자 처리
                 cout << "잘못된 입력입니다. 다시 입력해주세요." << endl;
                 break;
             }
+
             if (i < romanNum.length() - 1 && romanToArabic(romanNum[i]) < romanToArabic(romanNum[i + 1])) {
                 arabicNum -= romanToArabic(romanNum[i]); // 작은 수가 큰 수 앞에 오는 경우
             }
