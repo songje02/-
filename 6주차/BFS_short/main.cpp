@@ -45,23 +45,6 @@ int bfs(int sx, int sy, int ex, int ey) {
     return -1; // 도착하지 못한 경우
 }
 
-void printPath(int curX, int curY) {
-    for (int i = 0; i < 4; i++) { // 이동 가능한 모든 경우를 고려
-        int nx = curX + dx[i];
-        int ny = curY + dy[i];
-
-        if (nx < 0 || nx >= N || ny < 0 || ny >= M) continue; // 범위를 벗어나는 경우
-        if (dist[nx][ny] == -1) continue; // 갈 수 없는 곳
-        if (dist[nx][ny] < dist[curX][curY]) { // 이동한 경로일 경우
-            curX = nx;
-            curY = ny;
-            break;
-        }
-    }
-    cout << "====================" << endl;
-
-}
-
 void printMap(int playerX, int playerY, int enemyX, int enemyY, const vector<vector<int>>& map) {
     int curX = playerX, curY = playerY;
 
@@ -91,7 +74,7 @@ void printMap(int playerX, int playerY, int enemyX, int enemyY, const vector<vec
             cout << endl;
             
         }
-        //
+
         for (int i = 0; i < 4; i++) { // 이동 가능한 모든 경우를 고려
             int nx = curX + dx[i];
             int ny = curY + dy[i];
@@ -105,8 +88,6 @@ void printMap(int playerX, int playerY, int enemyX, int enemyY, const vector<vec
             }
         }
         cout << "====================" << endl;
-
-        printPath(curX, curY);
     }
 }
 
