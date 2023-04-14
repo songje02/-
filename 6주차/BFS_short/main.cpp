@@ -8,6 +8,7 @@ const int MAX_N = 1000; // 적과 플레이어의 최대 위치
 const int dx[4] = { 0, 0, 1, -1 }; // 이동 방향
 const int dy[4] = { 1, -1, 0, 0 };
 
+int playerX, playerY, enemyX, enemyY;
 int N, M; // 적과 플레이어의 위치
 int dist[MAX_N][MAX_N]; // 거리를 저장할 배열
 bool visited[MAX_N][MAX_N]; // 방문 여부를 저장할 배열
@@ -94,9 +95,7 @@ void printMap(int playerX, int playerY, int enemyX, int enemyY, const vector<vec
     }
 }
 
-
-int main() {
-    int playerX, playerY, enemyX, enemyY;
+void Input() {
     cout << "모든 입력은 띄어쓰기로 구별합니다." << endl;
     cout << "맵의 크기를 입력하세요 (가로 세로): ";
     cin >> N >> M;
@@ -108,6 +107,10 @@ int main() {
     // 적과 플레이어의 위치를 인덱스로 변환
     enemyX--; enemyY--;
     playerX--; playerY--;
+}
+
+int main() {
+    Input();
 
     // 맵 입력 받기
     vector<vector<int>> map(N, vector<int>(M));
