@@ -15,7 +15,6 @@ bool visited[MAX_N][MAX_N]; // 방문 여부를 저장할 배열
 
 struct Point {
     int x, y, d; // x좌표, y좌표, 거리
-    int prevX, prevY; // 이전 좌표
 };
 
 int bfs(int sx, int sy, int ex, int ey) {
@@ -41,7 +40,6 @@ int bfs(int sx, int sy, int ex, int ey) {
             visited[nx][ny] = true; // 방문 표시
             dist[nx][ny] = cur.d + 1; // 거리 갱신
             q.push({ nx, ny, cur.d + 1 }); // 큐에 삽입
-            q.push({ nx, ny, cur.d + 1, cur.x, cur.y }); // 이전 좌표도 함께 저장
         }
     }
 
