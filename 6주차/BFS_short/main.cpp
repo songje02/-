@@ -81,6 +81,7 @@ void printMap(int playerX, int playerY, int enemyX, int enemyY, const vector<vec
 
             if (nx < 0 || nx >= N || ny < 0 || ny >= M) continue; // 범위를 벗어나는 경우
             if (dist[nx][ny] == -1) continue; // 갈 수 없는 곳
+            if (map[nx][ny] == 1) continue; // 갈 수 없는 곳
             if (dist[nx][ny] < dist[curX][curY]) { // 이동한 경로일 경우
                 curX = nx;
                 curY = ny;
