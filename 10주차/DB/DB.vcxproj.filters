@@ -24,5 +24,8 @@
     <ClCompile Include="main3.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="main4.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
